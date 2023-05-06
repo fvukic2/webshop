@@ -27,7 +27,7 @@ public class ArticleCategoryController {
     }
 
     @PutMapping
-    private void updateArticleCategory(@PathVariable Integer id, @RequestBody ArticleCategory articleCategory){
+    private void updateArticleCategory(@RequestBody ArticleCategory articleCategory){
         articleCategoryService.updateArticleCategory(articleCategory);
     }
 
