@@ -22,7 +22,7 @@ public class Article {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "article_id")
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "article_category")
     private ArticleCategory articleCategory;
 }
