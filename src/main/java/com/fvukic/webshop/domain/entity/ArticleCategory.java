@@ -16,8 +16,8 @@ public class ArticleCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "article_id")
-    private Integer articleId;
+    @Column(name = "article_category_id")
+    private Integer articleCategoryId;
 
     @Column(name = "name")
     private String name;
