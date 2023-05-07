@@ -28,7 +28,7 @@ public class ArticleController {
 
     @PutMapping
     private void updateArticle(@RequestBody Article article){
-        articleService.saveNewArticle(article);
+        articleService.updateArticle(article);
     }
 
     @DeleteMapping("/{id}")
