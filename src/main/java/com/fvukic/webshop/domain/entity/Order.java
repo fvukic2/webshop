@@ -33,7 +33,7 @@ public class Order {
     @Column(name = "total_price")
     private Double totalPrice;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(name = "order_article",
             joinColumns = {@JoinColumn(name = "order_id")},
             inverseJoinColumns = {@JoinColumn(name = "article_id")})
