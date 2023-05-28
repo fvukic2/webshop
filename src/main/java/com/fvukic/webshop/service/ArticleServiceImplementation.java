@@ -1,5 +1,6 @@
 package com.fvukic.webshop.service;
 
+import com.fvukic.webshop.domain.api.ArticleRequest;
 import com.fvukic.webshop.domain.entity.Article;
 import com.fvukic.webshop.repository.ArticleRepository;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,10 @@ public class ArticleServiceImplementation implements ArticleService{
     @Override
     public void updateArticle(Article article) {
         articleRepository.save(article);
+    }
+
+    private Article getArticle(ArticleRequest articleRequest){
+        return Article.builder().name(articleRequest.getName()).
+                articleCategory(articleRequest.getArticleCategory()).build();
     }
 }
