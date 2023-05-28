@@ -1,8 +1,9 @@
-package com.fvukic.webshop.service;
+package com.fvukic.webshop.service.implementation;
 
 import com.fvukic.webshop.domain.api.OrderRequest;
 import com.fvukic.webshop.domain.entity.Order;
 import com.fvukic.webshop.repository.OrderRepository;
+import com.fvukic.webshop.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
