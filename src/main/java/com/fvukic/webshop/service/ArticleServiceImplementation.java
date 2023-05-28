@@ -22,18 +22,18 @@ public class ArticleServiceImplementation implements ArticleService {
     }
 
     @Override
-    public void saveNewArticle(ArticleRequest articleRequest) {
+    public void saveNewArticleRequest(ArticleRequest articleRequest) {
         Article article = getArticle(articleRequest);
         articleRepository.save(article);
     }
 
     @Override
-    public void deleteArticle(Integer id) {
+    public void deleteArticleRequest(Integer id) {
         articleRepository.deleteById(id);
     }
 
     @Override
-    public void updateArticle(ArticleRequest articleRequest) {
+    public void updateArticleRequest(ArticleRequest articleRequest) {
         Article article = getArticle(articleRequest);
         articleRepository.save(article);
     }

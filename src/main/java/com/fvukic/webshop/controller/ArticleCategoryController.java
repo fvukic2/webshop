@@ -23,17 +23,17 @@ public class ArticleCategoryController {
     }
 
     @PostMapping
-    private void saveNewArticleCategory(@RequestBody ArticleCategoryRequest articleCategoryRequest){
-        articleCategoryService.saveNewArticleCategory(articleCategoryRequest);
+    private void saveNewArticleCategoryRequest(@RequestBody ArticleCategoryRequest articleCategoryRequest){
+        articleCategoryService.saveNewArticleCategoryRequest(articleCategoryRequest);
     }
 
     @PutMapping
-    private void updateArticleCategory(@RequestBody ArticleCategoryRequest articleCategoryRequest){
-        articleCategoryService.updateArticleCategory(articleCategoryRequest);
+    private void updateArticleCategoryRequest(@RequestBody ArticleCategoryRequest articleCategoryRequest){
+        articleCategoryService.updateArticleCategoryRequest(articleCategoryRequest);
     }
 
     @DeleteMapping("/{id}")
-    private void deleteArticleCategory(@PathVariable Integer id){
-        articleCategoryService.deleteArticleCategory(id);
+    private void deleteArticleCategoryRequest(@PathVariable Integer id){
+        articleCategoryService.deleteArticleCategoryRequest(id);
     }
 }

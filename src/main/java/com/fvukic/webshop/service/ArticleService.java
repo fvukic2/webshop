@@ -9,10 +9,10 @@ public interface ArticleService {
 
     List<Article> getAllArticles();
 
-    void saveNewArticle(ArticleRequest articleRequest);
+    void saveNewArticleRequest(ArticleRequest articleRequest);
 
-    void deleteArticle(Integer id);
+    void deleteArticleRequest(Integer id);
 
-    void updateArticle(ArticleRequest articleRequest);
+    void updateArticleRequest(ArticleRequest articleRequest);
 
 }

@@ -22,18 +22,18 @@ public class ArticleCategoryServiceImplementation implements ArticleCategoryServ
     }
 
     @Override
-    public void saveNewArticleCategory(ArticleCategoryRequest articleCategoryRequest) {
+    public void saveNewArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest) {
         ArticleCategory articleCategory = getarticleCategory(articleCategoryRequest);
         articleCategoryRepository.save(articleCategory);
     }
 
     @Override
-    public void deleteArticleCategory(Integer id) {
+    public void deleteArticleCategoryRequest(Integer id) {
         articleCategoryRepository.deleteById(id);
     }
 
     @Override
-    public void updateArticleCategory(ArticleCategoryRequest articleCategoryRequest) {
+    public void updateArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest) {
         ArticleCategory articleCategory = getarticleCategory(articleCategoryRequest);
         articleCategoryRepository.save(articleCategory);
     }

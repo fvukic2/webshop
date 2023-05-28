@@ -23,18 +23,18 @@ public class ArticleController {
     }
 
     @PostMapping
-    private void saveNewArticle(@RequestBody ArticleRequest articleRequest){
-        articleService.saveNewArticle(articleRequest);
+    private void saveNewArticleRequest(@RequestBody ArticleRequest articleRequest){
+        articleService.saveNewArticleRequest(articleRequest);
     }
 
     @PutMapping
-    private void updateArticle(@RequestBody ArticleRequest articleRequest){
-        articleService.updateArticle(articleRequest);
+    private void updateArticleRequest(@RequestBody ArticleRequest articleRequest){
+        articleService.updateArticleRequest(articleRequest);
     }
 
     @DeleteMapping("/{id}")
-    private void deleteArticle(@PathVariable Integer id){
-        articleService.deleteArticle(id);
+    private void deleteArticleRequest(@PathVariable Integer id){
+        articleService.deleteArticleRequest(id);
     }
 
 }

@@ -9,9 +9,9 @@ public interface ArticleCategoryService {
 
     List<ArticleCategory> getAllArticleCategories();
 
-    void saveNewArticleCategory(ArticleCategoryRequest articleCategoryRequest);
+    void saveNewArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest);
 
-    void deleteArticleCategory(Integer id);
+    void deleteArticleCategoryRequest(Integer id);
 
-    void updateArticleCategory(ArticleCategoryRequest articleCategoryRequest);
+    void updateArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest);
 }
