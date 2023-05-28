@@ -22,7 +22,8 @@ public class ArticleCategoryServiceImplementation implements ArticleCategoryServ
     }
 
     @Override
-    public void saveNewArticleCategory(ArticleCategory articleCategory) {
+    public void saveNewArticleCategory(ArticleCategoryRequest articleCategoryRequest) {
+        ArticleCategory articleCategory = getarticleCategory(articleCategoryRequest);
         articleCategoryRepository.save(articleCategory);
     }
 
@@ -32,11 +33,12 @@ public class ArticleCategoryServiceImplementation implements ArticleCategoryServ
     }
 
     @Override
-    public void updateArticleCategory(ArticleCategory articleCategory) {
+    public void updateArticleCategory(ArticleCategoryRequest articleCategoryRequest) {
+        ArticleCategory articleCategory = getarticleCategory(articleCategoryRequest);
         articleCategoryRepository.save(articleCategory);
     }
 
-    private ArticleCategory articleCategory(ArticleCategoryRequest articleCategoryRequest){
+    private ArticleCategory getarticleCategory(ArticleCategoryRequest articleCategoryRequest){
         return ArticleCategory.builder().name(articleCategoryRequest.getName()).build();
     }
 }
