@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ArticleServiceImplementation implements ArticleService{
+public class ArticleServiceImplementation implements ArticleService {
 
     private ArticleRepository articleRepository;
 
@@ -22,7 +22,8 @@ public class ArticleServiceImplementation implements ArticleService{
     }
 
     @Override
-    public void saveNewArticle(Article article) {
+    public void saveNewArticle(ArticleRequest articleRequest) {
+        Article article = getArticle(articleRequest);
         articleRepository.save(article);
     }
 
@@ -32,7 +33,8 @@ public class ArticleServiceImplementation implements ArticleService{
     }
 
     @Override
-    public void updateArticle(Article article) {
+    public void updateArticle(ArticleRequest articleRequest) {
+        Article article = getArticle(articleRequest);
         articleRepository.save(article);
     }
 
