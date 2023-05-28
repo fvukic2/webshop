@@ -1,5 +1,6 @@
 package com.fvukic.webshop.controller;
 
+import com.fvukic.webshop.domain.api.OrderRequest;
 import com.fvukic.webshop.domain.entity.Order;
 import com.fvukic.webshop.service.OrderService;
 import org.springframework.web.bind.annotation.*;
@@ -22,17 +23,17 @@ public class OrderController {
     }
 
     @PostMapping()
-    private void saveNewOrder(@RequestBody Order order){
-        orderService.saveNewOrderRequestToDB(order);
+    private void saveNewOrderRequest(@RequestBody OrderRequest orderRequest){
+        orderService.saveNewOrderRequestToDB(orderRequest);
     }
 
     @PutMapping()
-    private void updateOrder(@RequestBody Order order){
-        orderService.updateOrderRequestInDB(order);
+    private void updateOrderRequest(@RequestBody OrderRequest orderRequest){
+        orderService.updateOrderRequestInDB(orderRequest);
     }
 
     @DeleteMapping("/{id}")
-    private void deleteOrder(@PathVariable int id){
+    private void deleteOrderRequest(@PathVariable int id){
         orderService.deleteOrderRequestFromDB(id);
     }
 }

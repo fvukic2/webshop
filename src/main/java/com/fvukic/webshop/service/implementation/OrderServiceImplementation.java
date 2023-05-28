@@ -1,7 +1,9 @@
-package com.fvukic.webshop.service;
+package com.fvukic.webshop.service.implementation;
 
+import com.fvukic.webshop.domain.api.OrderRequest;
 import com.fvukic.webshop.domain.entity.Order;
 import com.fvukic.webshop.repository.OrderRepository;
+import com.fvukic.webshop.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +18,8 @@ public class OrderServiceImplementation implements OrderService {
     }
 
     @Override
-    public void saveNewOrderRequestToDB(Order order) {
-
+    public void saveNewOrderRequestToDB(OrderRequest orderRequest) {
+        Order order = getOrderRequest(orderRequest);
         orderRepository.save(order);
     }
 
@@ -32,8 +34,15 @@ public class OrderServiceImplementation implements OrderService {
     }
 
     @Override
-    public void updateOrderRequestInDB(Order order) {
+    public void updateOrderRequestInDB(OrderRequest orderRequest) {
+        Order order = getOrderRequest(orderRequest);
         orderRepository.save(order);
+    }
+
+    private Order getOrderRequest(OrderRequest orderRequest){
+        return Order.builder().description(orderRequest.getDescription()).
+                totalPrice(orderRequest.getTotalPrice()).
+                articles(orderRequest.getArticles()).build();
     }
 
 }

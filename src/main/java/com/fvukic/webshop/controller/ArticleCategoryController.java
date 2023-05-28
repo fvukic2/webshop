@@ -1,5 +1,6 @@
 package com.fvukic.webshop.controller;
 
+import com.fvukic.webshop.domain.api.ArticleCategoryRequest;
 import com.fvukic.webshop.domain.entity.ArticleCategory;
 import com.fvukic.webshop.service.ArticleCategoryService;
 import org.springframework.web.bind.annotation.*;
@@ -22,17 +23,17 @@ public class ArticleCategoryController {
     }
 
     @PostMapping
-    private void saveNewArticleCategory(@RequestBody ArticleCategory articleCategory){
-        articleCategoryService.saveNewArticleCategory(articleCategory);
+    private void saveNewArticleCategoryRequest(@RequestBody ArticleCategoryRequest articleCategoryRequest){
+        articleCategoryService.saveNewArticleCategoryRequest(articleCategoryRequest);
     }
 
     @PutMapping
-    private void updateArticleCategory(@RequestBody ArticleCategory articleCategory){
-        articleCategoryService.updateArticleCategory(articleCategory);
+    private void updateArticleCategoryRequest(@RequestBody ArticleCategoryRequest articleCategoryRequest){
+        articleCategoryService.updateArticleCategoryRequest(articleCategoryRequest);
     }
 
     @DeleteMapping("/{id}")
-    private void deleteArticleCategory(@PathVariable Integer id){
-        articleCategoryService.deleteArticleCategory(id);
+    private void deleteArticleCategoryRequest(@PathVariable Integer id){
+        articleCategoryService.deleteArticleCategoryRequest(id);
     }
 }

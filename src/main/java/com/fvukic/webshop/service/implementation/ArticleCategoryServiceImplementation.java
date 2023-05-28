@@ -1,7 +1,9 @@
-package com.fvukic.webshop.service;
+package com.fvukic.webshop.service.implementation;
 
+import com.fvukic.webshop.domain.api.ArticleCategoryRequest;
 import com.fvukic.webshop.domain.entity.ArticleCategory;
 import com.fvukic.webshop.repository.ArticleCategoryRepository;
+import com.fvukic.webshop.service.ArticleCategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,17 +23,23 @@ public class ArticleCategoryServiceImplementation implements ArticleCategoryServ
     }
 
     @Override
-    public void saveNewArticleCategory(ArticleCategory articleCategory) {
+    public void saveNewArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest) {
+        ArticleCategory articleCategory = getarticleCategory(articleCategoryRequest);
         articleCategoryRepository.save(articleCategory);
     }
 
     @Override
-    public void deleteArticleCategory(Integer id) {
+    public void deleteArticleCategoryRequest(Integer id) {
         articleCategoryRepository.deleteById(id);
     }
 
     @Override
-    public void updateArticleCategory(ArticleCategory articleCategory) {
+    public void updateArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest) {
+        ArticleCategory articleCategory = getarticleCategory(articleCategoryRequest);
         articleCategoryRepository.save(articleCategory);
+    }
+
+    private ArticleCategory getarticleCategory(ArticleCategoryRequest articleCategoryRequest){
+        return ArticleCategory.builder().name(articleCategoryRequest.getName()).build();
     }
 }
