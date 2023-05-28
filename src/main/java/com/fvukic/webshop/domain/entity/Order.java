@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "order_table")
@@ -20,7 +21,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private Integer id;
+    private Integer orderId;
 
     @Column(name = "description")
     private String description;
@@ -31,4 +32,11 @@ public class Order {
 
     @Column(name = "total_price")
     private Double totalPrice;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "order_article",
+            joinColumns = {@JoinColumn(name = "order_id")},
+            inverseJoinColumns = {@JoinColumn(name = "article_id")})
+    private List<Article> articles;
+
 }
