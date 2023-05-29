@@ -54,10 +54,11 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- Hibernate validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>6.1.0.Final</version>
+			<version>8.0.0.Final</version>
 		</dependency>
 
 		<dependency>
