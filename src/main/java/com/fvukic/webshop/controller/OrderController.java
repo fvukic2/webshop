@@ -3,6 +3,9 @@ package com.fvukic.webshop.controller;
 import com.fvukic.webshop.domain.api.OrderRequest;
 import com.fvukic.webshop.domain.entity.Order;
 import com.fvukic.webshop.service.OrderService;
+import com.fvukic.webshop.util.Helper;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,12 +26,14 @@ public class OrderController {
     }
 
     @PostMapping()
-    private void saveNewOrderRequest(@RequestBody OrderRequest orderRequest){
+    private void saveNewOrderRequest(@Valid @RequestBody OrderRequest orderRequest, BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         orderService.saveNewOrderRequestToDB(orderRequest);
     }
 
     @PutMapping()
-    private void updateOrderRequest(@RequestBody OrderRequest orderRequest){
+    private void updateOrderRequest(@Valid @RequestBody OrderRequest orderRequest,  BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         orderService.updateOrderRequestInDB(orderRequest);
     }
 
