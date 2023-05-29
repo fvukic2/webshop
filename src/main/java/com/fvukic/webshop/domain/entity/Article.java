@@ -22,7 +22,11 @@ public class Article {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "article_price")
+    private Double articlePrice;
+
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "article_category")
     private ArticleCategory articleCategory;
+
 }
