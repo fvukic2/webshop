@@ -41,6 +41,8 @@ public class ArticleServiceImplementation implements ArticleService {
 
     private Article getArticle(ArticleRequest articleRequest){
         return Article.builder().name(articleRequest.getName()).
-                articleCategory(articleRequest.getArticleCategory()).build();
+                articleCategory(articleRequest.getArticleCategory()).
+                articlePrice(articleRequest.getArticlePrice())
+                .build();
     }
 }

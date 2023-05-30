@@ -1,25 +1,32 @@
 package com.fvukic.webshop.service.implementation;
 
 import com.fvukic.webshop.domain.api.OrderRequest;
+import com.fvukic.webshop.domain.entity.Article;
 import com.fvukic.webshop.domain.entity.Order;
+import com.fvukic.webshop.repository.ArticleRepository;
 import com.fvukic.webshop.repository.OrderRepository;
 import com.fvukic.webshop.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImplementation implements OrderService {
 
     private OrderRepository orderRepository;
 
-    public OrderServiceImplementation(OrderRepository orderRepository) {
+    private ArticleRepository articleRepository;
+
+    public OrderServiceImplementation(OrderRepository orderRepository, ArticleRepository articleRepository) {
         this.orderRepository = orderRepository;
+        this.articleRepository = articleRepository;
     }
 
     @Override
     public void saveNewOrderRequestToDB(OrderRequest orderRequest) {
         Order order = getOrderRequest(orderRequest);
+        calculateTotalPrice(order);
         orderRepository.save(order);
     }
 
@@ -39,9 +46,21 @@ public class OrderServiceImplementation implements OrderService {
         orderRepository.save(order);
     }
 
+    private void calculateTotalPrice(Order order){
+        List<Integer> articleIds = order.getArticles().stream()
+                .map(Article::getArticleId)
+                .collect(Collectors.toList());
+
+        List<Article> articles = articleRepository.findAllById(articleIds);
+        double totalPrice = articles.stream()
+                .mapToDouble(Article::getArticlePrice)
+                .sum();
+
+        order.setTotalPrice(totalPrice);
+    }
+
     private Order getOrderRequest(OrderRequest orderRequest){
         return Order.builder().description(orderRequest.getDescription()).
-                totalPrice(orderRequest.getTotalPrice()).
                 articles(orderRequest.getArticles()).build();
     }
 
