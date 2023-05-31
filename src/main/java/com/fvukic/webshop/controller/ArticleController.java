@@ -6,10 +6,10 @@ import com.fvukic.webshop.service.ArticleService;
 import com.fvukic.webshop.util.Helper;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
