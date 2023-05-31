@@ -1,5 +1,6 @@
 package com.fvukic.webshop.domain.entity;
 
+import io.swagger.annotations.ApiModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
+@ApiModel(description = "Fields of the ArticleCategory entity")
 public class ArticleCategory {
 
     @Id

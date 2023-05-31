@@ -1,5 +1,6 @@
 package com.fvukic.webshop.domain.entity;
 
+import io.swagger.annotations.ApiModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
+@ApiModel(description = "Fields of the Order entity")
 public class Order {
 
     @Id
