@@ -4,6 +4,8 @@ import com.fvukic.webshop.domain.api.ArticleCategoryRequest;
 import com.fvukic.webshop.domain.entity.ArticleCategory;
 import com.fvukic.webshop.service.ArticleCategoryService;
 import com.fvukic.webshop.util.Helper;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +28,15 @@ public class ArticleCategoryController {
     }
 
     @PostMapping
-    private void saveNewArticleCategoryRequest(@Valid @RequestBody ArticleCategoryRequest articleCategoryRequest, BindingResult bindingResult){
+    @ApiOperation(value = "Adds new ArticleCategoryRequest to database", notes = "Enter all ArticleCategoryRequest parameters to add new ArticleCategoryRequest object to database", response = ArticleCategoryRequest.class)
+    private void saveNewArticleCategoryRequest(@ApiParam(value = "ArticleCategoryRequest value you pass to the database")@Valid @RequestBody ArticleCategoryRequest articleCategoryRequest, BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
         articleCategoryService.saveNewArticleCategoryRequest(articleCategoryRequest);
     }
 
     @PutMapping
-    private void updateArticleCategoryRequest(@Valid @RequestBody ArticleCategoryRequest articleCategoryRequest, BindingResult bindingResult){
+    @ApiOperation(value = "Updates ArticleCategoryRequest in database", notes = "Enter ArticleCategoryRequest id to update ArticleCategoryRequest object in database", response = ArticleCategoryRequest.class)
+    private void updateArticleCategoryRequest(@ApiParam(value = "ArticleCategoryRequest value you pass to the database")@Valid @RequestBody ArticleCategoryRequest articleCategoryRequest, BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
         articleCategoryService.updateArticleCategoryRequest(articleCategoryRequest);
     }

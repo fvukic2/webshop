@@ -4,6 +4,8 @@ import com.fvukic.webshop.domain.api.OrderRequest;
 import com.fvukic.webshop.domain.entity.Order;
 import com.fvukic.webshop.service.OrderService;
 import com.fvukic.webshop.util.Helper;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +28,15 @@ public class OrderController {
     }
 
     @PostMapping()
-    private void saveNewOrderRequest(@Valid @RequestBody OrderRequest orderRequest, BindingResult bindingResult){
+    @ApiOperation(value = "Adds new OrderRequest to database", notes = "Enter all OrderRequest parameters to add new OrderRequest object to database", response = OrderRequest.class)
+    private void saveNewOrderRequest(@ApiParam(value = "OrderRequest value you pass to the database")@Valid @RequestBody OrderRequest orderRequest, BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
         orderService.saveNewOrderRequestToDB(orderRequest);
     }
 
     @PutMapping()
-    private void updateOrderRequest(@Valid @RequestBody OrderRequest orderRequest,  BindingResult bindingResult){
+    @ApiOperation(value = "Updates OrderRequest in database", notes = "Enter OrderRequest id to update OrderRequest object in database", response = OrderRequest.class)
+    private void updateOrderRequest(@ApiParam(value = "OrderRequest value you pass to the database")@Valid @RequestBody OrderRequest orderRequest,  BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
         orderService.updateOrderRequestInDB(orderRequest);
     }
