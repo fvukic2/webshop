@@ -6,10 +6,10 @@ import com.fvukic.webshop.service.ArticleCategoryService;
 import com.fvukic.webshop.util.Helper;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,11 +34,11 @@ public class ArticleCategoryController {
         articleCategoryService.saveNewArticleCategoryRequest(articleCategoryRequest);
     }
 
-    @PutMapping
+    @PutMapping("/{articleCategoryId}")
     @ApiOperation(value = "Updates ArticleCategoryRequest in database", notes = "Enter ArticleCategoryRequest id to update ArticleCategoryRequest object in database", response = ArticleCategoryRequest.class)
-    private void updateArticleCategoryRequest(@ApiParam(value = "ArticleCategoryRequest value you pass to the database")@Valid @RequestBody ArticleCategoryRequest articleCategoryRequest, BindingResult bindingResult){
+    private void updateArticleCategoryRequest(@ApiParam(value = "ArticleCategoryRequest value you pass to the database")@Valid @PathVariable Integer articleCategoryId, @RequestBody ArticleCategoryRequest articleCategoryRequest, BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
-        articleCategoryService.updateArticleCategoryRequest(articleCategoryRequest);
+        articleCategoryService.updateArticleCategoryRequest(articleCategoryRequest,articleCategoryId);
     }
 
     @DeleteMapping("/{id}")

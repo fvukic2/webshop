@@ -14,5 +14,5 @@ public interface OrderService {
 
     void deleteOrderRequestFromDB(Integer id);
 
-    void updateOrderRequestInDB(OrderRequest orderRequest);
+    void updateOrderRequestInDB(OrderRequest orderRequest,Integer orderId);
 }

@@ -13,6 +13,6 @@ public interface ArticleService {
 
     void deleteArticleRequest(Integer id);
 
-    void updateArticleRequest(ArticleRequest articleRequest);
+    void updateArticleRequest(ArticleRequest articleRequest,Integer articleId);
 
 }

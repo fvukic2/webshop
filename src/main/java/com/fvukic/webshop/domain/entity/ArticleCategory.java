@@ -1,11 +1,12 @@
 package com.fvukic.webshop.domain.entity;
 
 import io.swagger.annotations.ApiModel;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "article_category")

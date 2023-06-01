@@ -13,5 +13,5 @@ public interface ArticleCategoryService {
 
     void deleteArticleCategoryRequest(Integer id);
 
-    void updateArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest);
+    void updateArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest,Integer id);
 }

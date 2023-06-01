@@ -6,6 +6,7 @@ import com.fvukic.webshop.repository.ArticleCategoryRepository;
 import com.fvukic.webshop.service.ArticleCategoryService;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -34,9 +35,11 @@ public class ArticleCategoryServiceImplementation implements ArticleCategoryServ
     }
 
     @Override
-    public void updateArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest) {
-        ArticleCategory articleCategory = getarticleCategory(articleCategoryRequest);
-        articleCategoryRepository.save(articleCategory);
+    public void updateArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest,Integer articleCategoryId) {
+        ArticleCategory existingArticleCategory = articleCategoryRepository.findById(articleCategoryId)
+                .orElseThrow(() -> new EntityNotFoundException("Article category not found with ID: " + articleCategoryId));
+        existingArticleCategory.setName(articleCategoryRequest.getName());
+        articleCategoryRepository.save(existingArticleCategory);
     }
 
     private ArticleCategory getarticleCategory(ArticleCategoryRequest articleCategoryRequest){
