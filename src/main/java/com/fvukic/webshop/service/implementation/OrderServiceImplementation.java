@@ -8,6 +8,7 @@ import com.fvukic.webshop.repository.OrderRepository;
 import com.fvukic.webshop.service.OrderService;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,9 +42,12 @@ public class OrderServiceImplementation implements OrderService {
     }
 
     @Override
-    public void updateOrderRequestInDB(OrderRequest orderRequest) {
-        Order order = getOrderRequest(orderRequest);
-        orderRepository.save(order);
+    public void updateOrderRequestInDB(OrderRequest orderRequest,Integer orderId) {
+        Order existingOrder = orderRepository.findById(orderId)
+                .orElseThrow(() -> new EntityNotFoundException("Order not found with ID: " + orderId));
+        existingOrder.setDescription(orderRequest.getDescription());
+        existingOrder.setArticles(orderRequest.getArticles());
+        orderRepository.save(existingOrder);
     }
 
     private void calculateTotalPrice(Order order){

@@ -34,11 +34,11 @@ public class ArticleController {
         articleService.saveNewArticleRequest(articleRequest);
     }
 
-    @PutMapping
+    @PutMapping("/{articleId}")
     @ApiOperation(value = "Updates ArticleRequest in database", notes = "Enter ArticleRequest id to update ArticleRequest object in database", response = ArticleRequest.class)
-    private void updateArticleRequest(@ApiParam(value = "ArticleRequest value you pass to the database")@Valid @RequestBody ArticleRequest articleRequest,  BindingResult bindingResult){
+    private void updateArticleRequest(@ApiParam(value = "ArticleRequest value you pass to the database")@Valid @PathVariable Integer articleId, @RequestBody ArticleRequest articleRequest,  BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
-        articleService.updateArticleRequest(articleRequest);
+        articleService.updateArticleRequest(articleRequest,articleId);
     }
 
     @DeleteMapping("/{id}")
