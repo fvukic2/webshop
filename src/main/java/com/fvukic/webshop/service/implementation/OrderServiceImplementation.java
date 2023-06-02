@@ -3,12 +3,13 @@ package com.fvukic.webshop.service.implementation;
 import com.fvukic.webshop.domain.api.OrderRequest;
 import com.fvukic.webshop.domain.entity.Article;
 import com.fvukic.webshop.domain.entity.Order;
+import com.fvukic.webshop.exception.EntityWithIdNotFoundException;
 import com.fvukic.webshop.repository.ArticleRepository;
 import com.fvukic.webshop.repository.OrderRepository;
 import com.fvukic.webshop.service.OrderService;
+import com.fvukic.webshop.util.ErrorResponse;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,7 +45,7 @@ public class OrderServiceImplementation implements OrderService {
     @Override
     public void updateOrderRequestInDB(OrderRequest orderRequest,Integer orderId) {
         Order existingOrder = orderRepository.findById(orderId)
-                .orElseThrow(() -> new EntityNotFoundException("Order not found with ID: " + orderId));
+                .orElseThrow(() -> new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,orderId));
         existingOrder.setDescription(orderRequest.getDescription());
         existingOrder.setArticles(orderRequest.getArticles());
         orderRepository.save(existingOrder);
