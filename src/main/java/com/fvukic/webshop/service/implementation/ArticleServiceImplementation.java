@@ -3,12 +3,14 @@ package com.fvukic.webshop.service.implementation;
 import com.fvukic.webshop.domain.api.ArticleRequest;
 import com.fvukic.webshop.domain.entity.Article;
 import com.fvukic.webshop.domain.entity.ArticleCategory;
+import com.fvukic.webshop.exception.EntityWithIdNotFoundException;
+import com.fvukic.webshop.exception.WrongNewEntityId;
 import com.fvukic.webshop.repository.ArticleCategoryRepository;
 import com.fvukic.webshop.repository.ArticleRepository;
 import com.fvukic.webshop.service.ArticleService;
+import com.fvukic.webshop.util.ErrorResponse;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -42,11 +44,11 @@ public class ArticleServiceImplementation implements ArticleService {
     @Override
     public void updateArticleRequest(ArticleRequest articleRequest,Integer articleId) {
         Article article = articleRepository.findById(articleId)
-                .orElseThrow(() -> new EntityNotFoundException("Article not found with ID: " + articleId));
+                .orElseThrow(() -> new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,articleId));
         if (article != null) {
             if (articleRequest.getArticleCategory() != null) {
                 ArticleCategory newCategory = articleCategoryRepository.findById(articleRequest.getArticleCategory().getArticleCategoryId())
-                        .orElseThrow(() -> new IllegalArgumentException("New ArticleCategory with given ID does not exist"));
+                        .orElseThrow(() -> new WrongNewEntityId(ErrorResponse.ERROR_WRONG_NEW_ID));
                 article.setArticleCategory(newCategory);
             }
             if (articleRequest.getName() != null) {

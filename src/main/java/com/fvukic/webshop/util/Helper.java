@@ -11,7 +11,7 @@ public class Helper {
     public static void validateRequest(BindingResult result) {
         if (result.hasFieldErrors()) {
             List<FieldError> errors = result.getFieldErrors();
-            throw new BadRequestException(ErrorResponseConstants.ERROR_MISSING_REQUEST_PARAMETER + errorsToString(errors));
+            throw new BadRequestException(ErrorResponse.ERROR_MISSING_REQUEST_PARAMETERS + errorsToString(errors));
         }
     }
 
