@@ -1,6 +1,5 @@
 package com.fvukic.webshop.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,7 +43,9 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name="customer_id")
-    @JsonManagedReference
     private Customer customer;
+
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private Payment payment;
 
 }
