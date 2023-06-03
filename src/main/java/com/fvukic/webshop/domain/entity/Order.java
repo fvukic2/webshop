@@ -1,5 +1,6 @@
 package com.fvukic.webshop.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,5 +41,10 @@ public class Order {
             joinColumns = {@JoinColumn(name = "order_id")},
             inverseJoinColumns = {@JoinColumn(name = "article_id")})
     private List<Article> articles;
+
+    @ManyToOne
+    @JoinColumn(name="customer_id")
+    @JsonManagedReference
+    private Customer customer;
 
 }

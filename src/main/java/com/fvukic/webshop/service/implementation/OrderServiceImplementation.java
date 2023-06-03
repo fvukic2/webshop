@@ -48,6 +48,7 @@ public class OrderServiceImplementation implements OrderService {
                 .orElseThrow(() -> new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,orderId));
         existingOrder.setDescription(orderRequest.getDescription());
         existingOrder.setArticles(orderRequest.getArticles());
+        existingOrder.setCustomer(orderRequest.getCustomer());
         orderRepository.save(existingOrder);
     }
 
@@ -66,7 +67,9 @@ public class OrderServiceImplementation implements OrderService {
 
     private Order getOrderRequest(OrderRequest orderRequest){
         return Order.builder().description(orderRequest.getDescription()).
-                articles(orderRequest.getArticles()).build();
+                articles(orderRequest.getArticles())
+                .customer(orderRequest.getCustomer())
+                .build();
     }
 
 }

@@ -18,5 +18,5 @@ public class CustomerRequest {
     private String lastName;
 
     @NotBlank
-    private String email_address;
+    private String emailAddress;
 }

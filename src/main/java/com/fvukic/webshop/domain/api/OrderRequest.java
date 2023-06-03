@@ -1,6 +1,7 @@
 package com.fvukic.webshop.domain.api;
 
 import com.fvukic.webshop.domain.entity.Article;
+import com.fvukic.webshop.domain.entity.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,4 +21,6 @@ public class OrderRequest {
 //    private Double totalPrice;
 
     private List<Article> articles;
+
+    private Customer customer;
 }

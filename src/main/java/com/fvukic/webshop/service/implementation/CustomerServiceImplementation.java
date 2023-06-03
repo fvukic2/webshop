@@ -36,7 +36,7 @@ public class CustomerServiceImplementation implements CustomerService {
                 orElseThrow(() -> new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,customerId));
         existingCustomer.setFirstName(customerRequest.getFirstName());
         existingCustomer.setLastName(customerRequest.getLastName());
-        existingCustomer.setEmailAddress(customerRequest.getEmail_address());
+        existingCustomer.setEmailAddress(customerRequest.getEmailAddress());
         customerRepository.save(existingCustomer);
     }
 
@@ -48,6 +48,6 @@ public class CustomerServiceImplementation implements CustomerService {
     private Customer getCustomerRequest(CustomerRequest customerRequest){
         return Customer.builder().firstName(customerRequest.getFirstName()).
                 lastName(customerRequest.getLastName()).
-                emailAddress(customerRequest.getEmail_address()).build();
+                emailAddress(customerRequest.getEmailAddress()).build();
     }
 }
