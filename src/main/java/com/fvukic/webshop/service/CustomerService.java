@@ -11,7 +11,7 @@ public interface CustomerService {
 
     void saveNewCustomerRequest(CustomerRequest customerRequest);
 
-    void updateCustomerRequest(CustomerRequest customerRequest);
+    void updateCustomerRequest(CustomerRequest customerRequest,Integer customerId);
 
     void deleteCustomerRequest(Integer id);
 }
