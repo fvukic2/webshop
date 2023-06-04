@@ -1,6 +1,7 @@
 package com.fvukic.webshop.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,7 @@ import java.util.List;
 @Data
 @Builder
 @JsonIgnoreProperties({"orders", "payments"})
+@ApiModel(description = "Fields of the Customer entity")
 public class Customer {
 
     @Id
