@@ -41,8 +41,8 @@ public class ArticleCategoryController {
         articleCategoryService.updateArticleCategoryRequest(articleCategoryRequest,articleCategoryId);
     }
 
-    @DeleteMapping("/{id}")
-    private void deleteArticleCategoryRequest(@PathVariable Integer id){
-        articleCategoryService.deleteArticleCategoryRequest(id);
+    @DeleteMapping("/{articleCategoryId}")
+    private void deleteArticleCategoryRequest(@PathVariable Integer articleCategoryId){
+        articleCategoryService.deleteArticleCategoryRequest(articleCategoryId);
     }
 }

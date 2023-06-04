@@ -26,13 +26,13 @@ public class ArticleCategoryServiceImplementation implements ArticleCategoryServ
 
     @Override
     public void saveNewArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest) {
-        ArticleCategory articleCategory = getarticleCategory(articleCategoryRequest);
+        ArticleCategory articleCategory = getArticleCategory(articleCategoryRequest);
         articleCategoryRepository.save(articleCategory);
     }
 
     @Override
-    public void deleteArticleCategoryRequest(Integer id) {
-        articleCategoryRepository.deleteById(id);
+    public void deleteArticleCategoryRequest(Integer articleCategoryId) {
+        articleCategoryRepository.deleteById(articleCategoryId);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ArticleCategoryServiceImplementation implements ArticleCategoryServ
         articleCategoryRepository.save(existingArticleCategory);
     }
 
-    private ArticleCategory getarticleCategory(ArticleCategoryRequest articleCategoryRequest){
+    private ArticleCategory getArticleCategory(ArticleCategoryRequest articleCategoryRequest){
         return ArticleCategory.builder().name(articleCategoryRequest.getName()).build();
     }
 }

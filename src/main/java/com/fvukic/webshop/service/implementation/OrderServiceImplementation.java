@@ -31,7 +31,7 @@ public class OrderServiceImplementation implements OrderService {
     }
 
     @Override
-    public void saveNewOrderRequestToDB(OrderRequest orderRequest) {
+    public void saveNewOrderRequest(OrderRequest orderRequest) {
         Order order = getOrderRequest(orderRequest);
         calculateTotalPrice(order);
 
@@ -42,17 +42,17 @@ public class OrderServiceImplementation implements OrderService {
     }
 
     @Override
-    public List<Order> getAllOrdersFromDB() {
+    public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }
 
     @Override
-    public void deleteOrderRequestFromDB(Integer id) {
-        orderRepository.deleteById(id);
+    public void deleteOrderRequest(Integer orderId) {
+        orderRepository.deleteById(orderId);
     }
 
     @Override
-    public void updateOrderRequestInDB(OrderRequest orderRequest,Integer orderId) {
+    public void updateOrderRequest(OrderRequest orderRequest,Integer orderId) {
         Order existingOrder = orderRepository.findById(orderId)
                 .orElseThrow(() -> new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,orderId));
         existingOrder.setDescription(orderRequest.getDescription());
