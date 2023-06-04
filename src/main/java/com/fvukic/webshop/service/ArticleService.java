@@ -11,7 +11,7 @@ public interface ArticleService {
 
     void saveNewArticleRequest(ArticleRequest articleRequest);
 
-    void deleteArticleRequest(Integer id);
+    void deleteArticleRequest(Integer articleId);
 
     void updateArticleRequest(ArticleRequest articleRequest,Integer articleId);
 

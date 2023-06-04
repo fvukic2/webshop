@@ -24,25 +24,25 @@ public class OrderController {
 
     @GetMapping()
     private List<Order> getAllOrders(){
-        return orderService.getAllOrdersFromDB();
+        return orderService.getAllOrders();
     }
 
     @PostMapping()
     @ApiOperation(value = "Adds new OrderRequest to database", notes = "Enter all OrderRequest parameters to add new OrderRequest object to database", response = OrderRequest.class)
     private void saveNewOrderRequest(@ApiParam(value = "OrderRequest value you pass to the database")@Valid @RequestBody OrderRequest orderRequest, BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
-        orderService.saveNewOrderRequestToDB(orderRequest);
+        orderService.saveNewOrderRequest(orderRequest);
     }
 
     @PutMapping("/{orderId}")
     @ApiOperation(value = "Updates OrderRequest in database", notes = "Enter OrderRequest id to update OrderRequest object in database", response = OrderRequest.class)
     private void updateOrderRequest(@ApiParam(value = "OrderRequest value you pass to the database")@Valid @PathVariable Integer orderId, @RequestBody OrderRequest orderRequest, BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
-        orderService.updateOrderRequestInDB(orderRequest,orderId);
+        orderService.updateOrderRequest(orderRequest,orderId);
     }
 
-    @DeleteMapping("/{id}")
-    private void deleteOrderRequest(@PathVariable int id){
-        orderService.deleteOrderRequestFromDB(id);
+    @DeleteMapping("/{orderId}")
+    private void deleteOrderRequest(@PathVariable int orderId){
+        orderService.deleteOrderRequest(orderId);
     }
 }

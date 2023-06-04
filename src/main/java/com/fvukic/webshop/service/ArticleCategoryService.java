@@ -11,7 +11,7 @@ public interface ArticleCategoryService {
 
     void saveNewArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest);
 
-    void deleteArticleCategoryRequest(Integer id);
+    void deleteArticleCategoryRequest(Integer articleCategoryId);
 
-    void updateArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest,Integer id);
+    void updateArticleCategoryRequest(ArticleCategoryRequest articleCategoryRequest,Integer articleCategoryId);
 }

@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface OrderService {
 
-    void saveNewOrderRequestToDB(OrderRequest orderRequest);
+    void saveNewOrderRequest(OrderRequest orderRequest);
 
-    List<Order> getAllOrdersFromDB();
+    List<Order> getAllOrders();
 
-    void deleteOrderRequestFromDB(Integer id);
+    void deleteOrderRequest(Integer orderId);
 
-    void updateOrderRequestInDB(OrderRequest orderRequest,Integer orderId);
+    void updateOrderRequest(OrderRequest orderRequest,Integer orderId);
 }
