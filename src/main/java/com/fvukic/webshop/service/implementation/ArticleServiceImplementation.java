@@ -37,8 +37,11 @@ public class ArticleServiceImplementation implements ArticleService {
     }
 
     @Override
-    public void deleteArticleRequest(Integer id) {
-        articleRepository.deleteById(id);
+    public void deleteArticleRequest(Integer articleId) {
+        if (!articleRepository.existsById(articleId)){
+            throw new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID, articleId);
+        }
+        articleRepository.deleteById(articleId);
     }
 
     @Override
