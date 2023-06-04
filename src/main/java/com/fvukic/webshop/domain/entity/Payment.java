@@ -1,5 +1,8 @@
 package com.fvukic.webshop.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +18,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 @Builder
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "paymentId")
+@JsonIgnoreProperties({"customer"})
 public class Payment {
 
     @Id

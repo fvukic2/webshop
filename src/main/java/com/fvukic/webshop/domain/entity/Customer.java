@@ -1,6 +1,6 @@
 package com.fvukic.webshop.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
+@JsonIgnoreProperties({"orders", "payments"})
 public class Customer {
 
     @Id
@@ -32,7 +33,6 @@ public class Customer {
     private String emailAddress;
 
     @OneToMany(mappedBy="customer")
-    @JsonBackReference
     private List<Order> orders;
 
     @OneToMany(mappedBy = "customer")
