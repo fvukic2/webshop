@@ -3,10 +3,13 @@ package com.fvukic.webshop.controller;
 import com.fvukic.webshop.domain.api.CustomerRequest;
 import com.fvukic.webshop.domain.entity.Customer;
 import com.fvukic.webshop.service.CustomerService;
+import com.fvukic.webshop.util.Helper;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,13 +29,15 @@ public class CustomerController {
 
     @PostMapping
     @ApiOperation(value = "Adds new CustomerRequest to database", notes = "Enter all CustomerRequest parameters to add new CustomerRequest object to database", response = CustomerRequest.class)
-    private void saveNewCustomerRequest(@ApiParam(value = "CustomerRequest value you pass to the database")@RequestBody CustomerRequest customerRequest){
+    private void saveNewCustomerRequest(@ApiParam(value = "CustomerRequest value you pass to the database")@Valid@RequestBody CustomerRequest customerRequest, BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         customerService.saveNewCustomerRequest(customerRequest);
     }
 
     @PutMapping("/{customerId}")
     @ApiOperation(value = "Updates CustomerRequest in database", notes = "Enter CustomerRequest id to update CustomerRequest object in database", response = CustomerRequest.class)
-    private void updateCustomerRequest(@ApiParam(value = "CustomerRequest value you pass to the database")@PathVariable Integer customerId, @RequestBody CustomerRequest customerRequest){
+    private void updateCustomerRequest(@ApiParam(value = "CustomerRequest value you pass to the database")@Valid @PathVariable Integer customerId, @RequestBody CustomerRequest customerRequest,BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         customerService.updateCustomerRequest(customerRequest,customerId);
     }
 
