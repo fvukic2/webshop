@@ -42,6 +42,9 @@ public class CustomerServiceImplementation implements CustomerService {
 
     @Override
     public void deleteCustomerRequest(Integer customerId) {
+        if (!customerRepository.existsById(customerId)) {
+            throw new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID, customerId);
+        }
         customerRepository.deleteById(customerId);
     }
 

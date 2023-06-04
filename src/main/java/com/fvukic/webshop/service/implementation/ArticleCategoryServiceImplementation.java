@@ -32,6 +32,9 @@ public class ArticleCategoryServiceImplementation implements ArticleCategoryServ
 
     @Override
     public void deleteArticleCategoryRequest(Integer articleCategoryId) {
+        if (!articleCategoryRepository.existsById(articleCategoryId)){
+            throw new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,articleCategoryId);
+        }
         articleCategoryRepository.deleteById(articleCategoryId);
     }
 
