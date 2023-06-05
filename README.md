@@ -33,7 +33,3 @@ Projekt Webshop je aplikacija za online kupovinu koja omogućava korisnicima pre
 4. Pokrenite aplikaciju. Ovo će inicijalizirati bazu podataka i stvoriti tablice za entitete.
 
 5. Testirajte API endpointe putem kontrolera kako biste provjerili ispravnost funkcionalnosti. Možete koristiti alate kao što su Postman ili cURL za slanje HTTP zahtjeva.
-
-## Autor
-
-Ime Prezime - [@fvukic2](https://github.com/fvukic2)
