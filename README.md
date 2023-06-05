@@ -2,10 +2,10 @@
 
 Projekt Webshop je aplikacija za online kupovinu koja omogućava korisnicima pregled, pretraživanje i kupovinu artikala putem interneta.
 
-![Java](https://img.shields.io/badge/Java-8%2B-blue.svg)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.5.0-green.svg)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12.0-blue.svg)
-![Hibernate](https://img.shields.io/badge/Hibernate-5.4.0-orange.svg)
+![Java](https://img.shields.io/badge/Java-17%2B-blue.svg)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.1-green.svg)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.2-blue.svg)
+![Hibernate](https://img.shields.io/badge/Hibernate-5.6.9-orange.svg)
 
 ## Funkcionalnosti
 
@@ -24,7 +24,7 @@ Projekt Webshop je aplikacija za online kupovinu koja omogućava korisnicima pre
 
 ## Upute za instalaciju
 
-1. Klonirajte repozitorij na svoje računalo: git clone https://github.com/tvoj-username/webshop.git
+1. Klonirajte repozitorij na svoje računalo: git clone https://github.com/fvukic2/webshop.git
 
 2. Uvezite projekt u vašu razvojnu okolinu (npr. Eclipse, IntelliJ itd.)
 
