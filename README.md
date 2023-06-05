@@ -1,4 +1,4 @@
-# Naziv Projekta
+# Webshop
 
 Projekt Webshop je aplikacija za online kupovinu koja omogućava korisnicima pregled, pretraživanje i kupovinu artikala putem interneta.
 
