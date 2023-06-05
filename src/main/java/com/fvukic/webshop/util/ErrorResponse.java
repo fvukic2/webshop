@@ -8,4 +8,6 @@ public class ErrorResponse {
 
     public static final String ERROR_WRONG_NEW_ID = "Couldn't find Database record with new ID";
 
+    public static final String INVALID_ORDER = "Order is invalid";
+
 }

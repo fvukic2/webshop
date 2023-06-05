@@ -12,6 +12,7 @@ import com.fvukic.webshop.service.OrderService;
 import com.fvukic.webshop.util.ErrorResponse;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Validator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,10 +25,13 @@ public class OrderServiceImplementation implements OrderService {
 
     private PaymentRepository paymentRepository;
 
-    public OrderServiceImplementation(OrderRepository orderRepository, ArticleRepository articleRepository, PaymentRepository paymentRepository) {
+    private Validator validator;
+
+    public OrderServiceImplementation(OrderRepository orderRepository, ArticleRepository articleRepository, PaymentRepository paymentRepository, Validator validator) {
         this.orderRepository = orderRepository;
         this.articleRepository = articleRepository;
         this.paymentRepository = paymentRepository;
+        this.validator = validator;
     }
 
     @Override
@@ -39,6 +43,7 @@ public class OrderServiceImplementation implements OrderService {
         order.setPayment(payment);
 
         orderRepository.save(order);
+
     }
 
     @Override
