@@ -78,11 +78,11 @@ public class OrderServiceImplementation implements OrderService {
                 .sum();
 
         if (totalPrice > 200) {
-            double discountedPrice = totalPrice * 0.85; // 15% popusta
+            double discountedPrice = totalPrice * 0.85;
             order.setDiscountedPrice(discountedPrice);
             order.setDiscountReason("Discount 15% - Total price over 200");
         } else if (totalPrice > 100) {
-            double discountedPrice = totalPrice * 0.9; // 10% popusta
+            double discountedPrice = totalPrice * 0.9;
             order.setDiscountedPrice(discountedPrice);
             order.setDiscountReason("Discount 10% - Total price over 100");
         } else {
