@@ -41,6 +41,9 @@ public class Order {
     @Column(name = "discounted_price")
     private Double discountedPrice;
 
+    @Column(name = "discount_reason")
+    private String discountReason;
+
     @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(name = "order_article",
             joinColumns = {@JoinColumn(name = "order_id")},
