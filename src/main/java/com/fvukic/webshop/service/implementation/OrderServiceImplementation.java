@@ -79,6 +79,16 @@ public class OrderServiceImplementation implements OrderService {
                 .mapToDouble(Article::getArticlePrice)
                 .sum();
 
+        if (totalPrice > 100 && totalPrice <= 200) {
+            double discount = totalPrice * 0.1;
+            order.setDiscountedPrice(totalPrice - discount);
+        } else if (totalPrice > 200) {
+            double discount = totalPrice * 0.15;
+            order.setDiscountedPrice(totalPrice - discount);
+        } else {
+            order.setDiscountedPrice(totalPrice);
+        }
+
         order.setTotalPrice(totalPrice);
     }
 
