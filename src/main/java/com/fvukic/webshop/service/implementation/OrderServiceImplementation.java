@@ -77,6 +77,11 @@ public class OrderServiceImplementation implements OrderService {
                 .mapToDouble(Double::doubleValue)
                 .sum();
 
+        applyDiscount(order, totalPrice);
+        order.setTotalPrice(totalPrice);
+    }
+
+    private void applyDiscount(Order order, double totalPrice) {
         if (totalPrice > 200) {
             double discountedPrice = totalPrice * 0.85;
             order.setDiscountedPrice(discountedPrice);
@@ -89,8 +94,6 @@ public class OrderServiceImplementation implements OrderService {
             order.setDiscountedPrice(totalPrice);
             order.setDiscountReason("No discount for this order!");
         }
-
-        order.setTotalPrice(totalPrice);
     }
 
     private Payment createPayment(Order order) {
