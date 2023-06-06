@@ -36,6 +36,7 @@ public class AddressServiceImplementation implements AddressService {
                 orElseThrow(() -> new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,addressId));
         existingAddress.setAddress(addressRequest.getAddress());
         existingAddress.setPostalCode(addressRequest.getPostalCode());
+        addressRepository.save(existingAddress);
     }
 
     @Override
