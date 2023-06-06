@@ -1,7 +1,6 @@
 package com.fvukic.webshop.service.implementation;
 
 import com.fvukic.webshop.domain.api.OrderRequest;
-import com.fvukic.webshop.domain.entity.Article;
 import com.fvukic.webshop.domain.entity.Order;
 import com.fvukic.webshop.domain.entity.Payment;
 import com.fvukic.webshop.exception.EntityWithIdNotFoundException;
@@ -13,8 +12,9 @@ import com.fvukic.webshop.util.ErrorResponse;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Validator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @Service
 public class OrderServiceImplementation implements OrderService {
@@ -70,16 +70,30 @@ public class OrderServiceImplementation implements OrderService {
     }
 
     private void calculateTotalPrice(Order order){
-        List<Integer> articleIds = order.getArticles().stream()
-                .map(Article::getArticleId)
-                .collect(Collectors.toList());
+        Map<Integer, Double> pricesById = new HashMap<>();
+        order.getArticles().forEach(article -> pricesById.merge(article.getArticleId(), article.getArticlePrice(), Double::sum));
 
-        List<Article> articles = articleRepository.findAllById(articleIds);
-        double totalPrice = articles.stream()
-                .mapToDouble(Article::getArticlePrice)
+        double totalPrice = pricesById.values().stream()
+                .mapToDouble(Double::doubleValue)
                 .sum();
 
+        applyDiscount(order, totalPrice);
         order.setTotalPrice(totalPrice);
+    }
+
+    private void applyDiscount(Order order, double totalPrice) {
+        if (totalPrice > 200) {
+            double discountedPrice = totalPrice * 0.85;
+            order.setDiscountedPrice(discountedPrice);
+            order.setDiscountReason("Discount 15% - Total price over 200");
+        } else if (totalPrice > 100) {
+            double discountedPrice = totalPrice * 0.9;
+            order.setDiscountedPrice(discountedPrice);
+            order.setDiscountReason("Discount 10% - Total price over 100");
+        } else {
+            order.setDiscountedPrice(totalPrice);
+            order.setDiscountReason("No discount for this order!");
+        }
     }
 
     private Payment createPayment(Order order) {
