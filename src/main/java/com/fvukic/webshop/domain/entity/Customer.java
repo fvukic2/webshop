@@ -39,4 +39,8 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer")
     private List<Payment> payments;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "address_id")
+    private Address address;
 }

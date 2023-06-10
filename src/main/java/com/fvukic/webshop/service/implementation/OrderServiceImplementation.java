@@ -53,7 +53,7 @@ public class OrderServiceImplementation implements OrderService {
 
     @Override
     public void deleteOrderRequest(Integer orderId) {
-        if (orderRepository.existsById(orderId)){
+        if (!orderRepository.existsById(orderId)){
             throw new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,orderId);
         }
         orderRepository.deleteById(orderId);

@@ -3,8 +3,12 @@ package com.fvukic.webshop.controller;
 import com.fvukic.webshop.domain.api.AddressRequest;
 import com.fvukic.webshop.domain.entity.Address;
 import com.fvukic.webshop.service.AddressService;
+import com.fvukic.webshop.util.Helper;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,12 +27,16 @@ public class AddressController {
     }
 
     @PostMapping
-    private void saveNewAddressRequest(@RequestBody AddressRequest addressRequest){
+    @ApiOperation(value = "Adds new AddressRequest to database", notes = "Enter all AddressRequest parameters to add new AddressRequest object to database", response = AddressRequest.class)
+    private void saveNewAddressRequest(@Valid @RequestBody AddressRequest addressRequest, BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         addressService.saveNewAddressRequest(addressRequest);
     }
 
     @PutMapping("/{addressId}")
-    private void updateAddressRequest(@PathVariable Integer addressId, @RequestBody AddressRequest addressRequest){
+    @ApiOperation(value = "Updates AddressRequest in database", notes = "Enter AddressRequest id to update AddressRequest object in database", response = AddressRequest.class)
+    private void updateAddressRequest(@Valid @PathVariable Integer addressId, @RequestBody AddressRequest addressRequest, BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         addressService.updateAddressRequest(addressRequest,addressId);
     }
 
