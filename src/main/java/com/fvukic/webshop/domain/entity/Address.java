@@ -1,5 +1,8 @@
 package com.fvukic.webshop.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +18,8 @@ import javax.persistence.*;
 @Data
 @Builder
 @ApiModel(description = "Fields of the Address entity")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "addressId")
+@JsonIgnoreProperties({"customer"})
 public class Address {
 
     @Id
@@ -31,5 +36,8 @@ public class Address {
     @OneToOne
     @JoinColumn(name = "city_id")
     private City city;
+
+    @OneToOne(mappedBy = "address")
+    private Customer customer;
 
 }
