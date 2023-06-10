@@ -36,6 +36,7 @@ public class AddressServiceImplementation implements AddressService {
                 orElseThrow(() -> new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,addressId));
         existingAddress.setAddress(addressRequest.getAddress());
         existingAddress.setPostalCode(addressRequest.getPostalCode());
+        existingAddress.setCity(addressRequest.getCity());
         addressRepository.save(existingAddress);
     }
 
@@ -49,6 +50,7 @@ public class AddressServiceImplementation implements AddressService {
     
     private Address getAddress(AddressRequest addressRequest){
         return Address.builder().address(addressRequest.getAddress()).
-                postalCode(addressRequest.getPostalCode()).build();
+                postalCode(addressRequest.getPostalCode()).city(addressRequest.getCity())
+                .build();
     }
 }

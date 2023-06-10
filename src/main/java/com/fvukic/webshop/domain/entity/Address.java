@@ -28,4 +28,8 @@ public class Address {
     @Column(name = "postal_code")
     private String postalCode;
 
+    @OneToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+
 }

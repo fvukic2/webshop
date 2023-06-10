@@ -1,5 +1,6 @@
 package com.fvukic.webshop.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Builder
+@JsonIgnoreProperties({"address"})
 public class City {
 
     @Id
@@ -22,5 +24,8 @@ public class City {
 
     @Column(name = "city")
     private String city;
+
+    @OneToOne(mappedBy = "city")
+    private Address address;
 
 }
