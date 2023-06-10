@@ -1,6 +1,7 @@
 package com.fvukic.webshop.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,7 @@ import javax.persistence.*;
 @Data
 @Builder
 @JsonIgnoreProperties({"address"})
+@ApiModel(description = "Fields of the City entity")
 public class City {
 
     @Id

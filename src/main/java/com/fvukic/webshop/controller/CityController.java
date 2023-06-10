@@ -3,8 +3,13 @@ package com.fvukic.webshop.controller;
 import com.fvukic.webshop.domain.api.CityRequest;
 import com.fvukic.webshop.domain.entity.City;
 import com.fvukic.webshop.service.CityService;
+import com.fvukic.webshop.util.Helper;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,12 +28,16 @@ public class CityController {
     }
 
     @PostMapping
-    private void saveNewCityRequest(@RequestBody CityRequest cityRequest){
+    @ApiOperation(value = "Adds new CityRequest to database", notes = "Enter all CityRequest parameters to add new CityRequest object to database", response = CityRequest.class)
+    private void saveNewCityRequest(@ApiParam(value = "CityRequest value you pass to the database")@Valid @RequestBody CityRequest cityRequest, BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         cityService.saveNewCityRequest(cityRequest);
     }
 
     @PutMapping("/{cityId}")
-    private void updateCityRequest(@PathVariable Integer cityId, @RequestBody CityRequest cityRequest){
+    @ApiOperation(value = "Updates CityRequest in database", notes = "Enter CityRequest id to update CityRequest object in database", response = CityRequest.class)
+    private void updateCityRequest(@ApiParam(value = "CityRequest value you pass to the database")@Valid @PathVariable Integer cityId, @RequestBody CityRequest cityRequest, BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         cityService.updateCityRequest(cityRequest,cityId);
     }
 
