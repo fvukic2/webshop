@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -43,5 +44,13 @@ public class Payment {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    @CreationTimestamp
+    @Column(name = "creation_time")
+    private LocalDateTime creationTime;
+
+    @UpdateTimestamp
+    @Column(name = "update_time")
+    private LocalDateTime updateTime;
 
 }

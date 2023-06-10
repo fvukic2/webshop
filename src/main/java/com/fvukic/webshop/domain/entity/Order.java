@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -32,8 +33,12 @@ public class Order {
     private String description;
 
     @CreationTimestamp
-    @Column(name = "order_time")
-    private LocalDateTime orderTime;
+    @Column(name = "creation_time")
+    private LocalDateTime creationTime;
+
+    @UpdateTimestamp
+    @Column(name = "update_time")
+    private LocalDateTime updateTime;
 
     @Column(name = "total_price")
     private Double totalPrice;

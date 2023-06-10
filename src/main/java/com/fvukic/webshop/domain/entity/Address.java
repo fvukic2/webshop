@@ -8,8 +8,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "address")
@@ -39,5 +42,13 @@ public class Address {
 
     @OneToOne(mappedBy = "address")
     private Customer customer;
+
+    @CreationTimestamp
+    @Column(name = "creation_time")
+    private LocalDateTime creationTime;
+
+    @UpdateTimestamp
+    @Column(name = "update_time")
+    private LocalDateTime updateTime;
 
 }

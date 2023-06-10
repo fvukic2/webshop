@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "article")
@@ -31,5 +34,13 @@ public class Article {
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "article_category")
     private ArticleCategory articleCategory;
+
+    @CreationTimestamp
+    @Column(name = "creation_time")
+    private LocalDateTime creationTime;
+
+    @UpdateTimestamp
+    @Column(name = "update_time")
+    private LocalDateTime updateTime;
 
 }
