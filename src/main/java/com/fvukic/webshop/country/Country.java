@@ -1,5 +1,7 @@
 package com.fvukic.webshop.country;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fvukic.webshop.city.City;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 @Builder
+@JsonIgnoreProperties({"city"})
 public class Country {
 
     @Id
@@ -33,5 +36,8 @@ public class Country {
     @UpdateTimestamp
     @Column(name = "update_time")
     private LocalDateTime updateTime;
+
+    @OneToOne(mappedBy = "country")
+    private City city;
 
 }

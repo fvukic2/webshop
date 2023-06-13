@@ -2,6 +2,7 @@ package com.fvukic.webshop.city;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fvukic.webshop.address.Address;
+import com.fvukic.webshop.country.Country;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,5 +42,10 @@ public class City {
     @UpdateTimestamp
     @Column(name = "update_time")
     private LocalDateTime updateTime;
+
+    @OneToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
+
 
 }
