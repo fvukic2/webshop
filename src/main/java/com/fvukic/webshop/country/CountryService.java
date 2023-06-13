@@ -1,13 +1,12 @@
 package com.fvukic.webshop.country;
 
-import com.fvukic.webshop.city.City;
 import com.fvukic.webshop.country.model.CountryRequest;
 
 import java.util.List;
 
 public interface CountryService {
 
-    List<City> getAllCountries();
+    List<Country> getAllCountries();
 
     void saveNewCountryRequest(CountryRequest countryRequest);
 
