@@ -15,6 +15,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "address")
@@ -24,7 +25,7 @@ import java.time.LocalDateTime;
 @Builder
 @ApiModel(description = "Fields of the Address entity")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "addressId")
-@JsonIgnoreProperties({"customer"})
+@JsonIgnoreProperties({"customers"})
 public class Address {
 
     @Id
@@ -42,8 +43,8 @@ public class Address {
     @JoinColumn(name = "city_id")
     private City city;
 
-    @OneToOne(mappedBy = "address")
-    private Customer customer;
+    @OneToMany(mappedBy = "address")
+    private List<Customer> customers;
 
     @CreationTimestamp
     @Column(name = "creation_time")

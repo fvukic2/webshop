@@ -1,7 +1,5 @@
 package com.fvukic.webshop.city;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fvukic.webshop.address.Address;
 import com.fvukic.webshop.country.Country;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
@@ -20,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 @Builder
-@JsonIgnoreProperties({"address"})
+//@JsonIgnoreProperties({"address"})
 @ApiModel(description = "Fields of the City entity")
 public class City {
 
@@ -31,9 +29,6 @@ public class City {
 
     @Column(name = "city")
     private String city;
-
-    @OneToOne(mappedBy = "city")
-    private Address address;
 
     @CreationTimestamp
     @Column(name = "creation_time")

@@ -1,7 +1,6 @@
 package com.fvukic.webshop.country;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fvukic.webshop.city.City;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,7 +36,5 @@ public class Country {
     @Column(name = "update_time")
     private LocalDateTime updateTime;
 
-    @OneToOne(mappedBy = "country")
-    private City city;
 
 }
