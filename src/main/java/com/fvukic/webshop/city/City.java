@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 @Builder
-//@JsonIgnoreProperties({"address"})
 @ApiModel(description = "Fields of the City entity")
 public class City {
 

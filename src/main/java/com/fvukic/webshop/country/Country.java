@@ -1,6 +1,7 @@
 package com.fvukic.webshop.country;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 @JsonIgnoreProperties({"city"})
+@ApiModel(description = "Fields of the Country entity")
 public class Country {
 
     @Id
