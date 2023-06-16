@@ -1,6 +1,6 @@
-package com.fvukic.webshop.city;
+package com.fvukic.webshop.country;
 
-import com.fvukic.webshop.country.Country;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,21 +13,22 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "city")
+@Table(name = "country")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-@ApiModel(description = "Fields of the City entity")
-public class City {
+@JsonIgnoreProperties({"city"})
+@ApiModel(description = "Fields of the Country entity")
+public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cityId")
-    private Integer cityId;
+    @Column(name = "country_id")
+    private Integer countryId;
 
-    @Column(name = "city")
-    private String city;
+    @Column(name = "country")
+    private String country;
 
     @CreationTimestamp
     @Column(name = "creation_time")
@@ -36,10 +37,6 @@ public class City {
     @UpdateTimestamp
     @Column(name = "update_time")
     private LocalDateTime updateTime;
-
-    @OneToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
 
 
 }

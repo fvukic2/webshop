@@ -47,9 +47,9 @@ public class CustomerServiceImplementation implements CustomerService {
     }
 
     private Customer getCustomerRequest(CustomerRequest customerRequest){
-        return Customer.builder().firstName(customerRequest.getFirstName()).
-                lastName(customerRequest.getLastName()).
-                emailAddress(customerRequest.getEmailAddress()).
-                address(customerRequest.getAddress()).build();
+        return Customer.builder().firstName(customerRequest.getFirstName())
+                .lastName(customerRequest.getLastName())
+                .emailAddress(customerRequest.getEmailAddress())
+                .address(customerRequest.getAddress()).build();
     }
 }

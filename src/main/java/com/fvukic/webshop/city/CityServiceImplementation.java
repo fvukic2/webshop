@@ -33,6 +33,7 @@ public class CityServiceImplementation implements CityService {
         City existingCity = cityRepository.findById(cityId).
                 orElseThrow(() -> new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,cityId));
         existingCity.setCity(cityRequest.getCity());
+        existingCity.setCountry(cityRequest.getCountry());
         cityRepository.save(existingCity);
     }
 
@@ -45,6 +46,7 @@ public class CityServiceImplementation implements CityService {
     }
 
     private City getCityRequest(CityRequest cityRequest){
-        return City.builder().city(cityRequest.getCity()).build();
+        return City.builder().city(cityRequest.getCity()).
+                country(cityRequest.getCountry()).build();
     }
 }
