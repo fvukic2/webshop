@@ -1,8 +1,13 @@
 package com.fvukic.webshop.payment;
 
 import com.fvukic.webshop.payment.model.PaymentRequest;
+import com.fvukic.webshop.util.Helper;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +26,9 @@ public class PaymentController {
     }
 
     @PutMapping("/{paymentId}")
-    private void updatePaymentRequest(@PathVariable Integer paymentId, @RequestBody PaymentRequest paymentRequest){
+    @ApiOperation(value = "Updates PaymentRequest in database", notes = "Enter PaymentRequest id to update PaymentRequest object in database", response = PaymentRequest.class)
+    private void updatePaymentRequest(@ApiParam(value = "PaymentRequest value you pass to the database")@Valid @PathVariable Integer paymentId, @RequestBody PaymentRequest paymentRequest, BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         paymentService.updatePaymentRequest(paymentRequest,paymentId);
     }
 
