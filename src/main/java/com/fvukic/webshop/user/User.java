@@ -1,5 +1,6 @@
 package com.fvukic.webshop.user;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 @Builder
+@ApiModel(description = "Fields of the User entity")
 public class User {
 
     @Id

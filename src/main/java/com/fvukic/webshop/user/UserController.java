@@ -1,8 +1,13 @@
 package com.fvukic.webshop.user;
 
 import com.fvukic.webshop.user.model.UserRequest;
+import com.fvukic.webshop.util.Helper;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,12 +26,16 @@ public class UserController {
     }
 
     @PostMapping
-    private void saveNewUserRequest(@RequestBody UserRequest userRequest){
+    @ApiOperation(value = "Adds new UserRequest to database", notes = "Enter all UserRequest parameters to add new UserRequest object to database", response = UserRequest.class)
+    private void saveNewUserRequest(@ApiParam(value = "UserRequest value you pass to the database")@Valid @RequestBody UserRequest userRequest, BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         userService.saveNewUserRequest(userRequest);
     }
 
     @PutMapping("/{userId}")
-    private void updateUserRequest(@RequestBody UserRequest userRequest,@PathVariable Integer userId){
+    @ApiOperation(value = "Updates UserRequest in database", notes = "Enter UserRequest id to update UserRequest object in database", response = UserRequest.class)
+    private void updateUserRequest(@ApiParam(value = "UserRequest value you pass to the database")@Valid @RequestBody UserRequest userRequest,@PathVariable Integer userId, BindingResult bindingResult){
+        Helper.validateRequest(bindingResult);
         userService.updateUserRequest(userRequest,userId);
     }
 
