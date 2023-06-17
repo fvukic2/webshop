@@ -34,7 +34,7 @@ public class RoleController {
 
     @PutMapping("/{roleId}")
     @ApiOperation(value = "Updates RoleRequest in database", notes = "Enter RoleRequest id to update RoleRequest object in database", response = RoleRequest.class)
-    private void updateRoleRequest(@ApiParam(value = "RoleRequest value you pass to the database")@Valid @RequestBody RoleRequest roleRequest,@PathVariable Integer roleId, BindingResult bindingResult){
+    private void updateRoleRequest(@ApiParam(value = "RoleRequest value you pass to the database")@Valid @PathVariable Integer roleId, @RequestBody RoleRequest roleRequest, BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
         roleService.updateRoleRequest(roleRequest,roleId);
     }

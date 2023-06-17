@@ -34,7 +34,7 @@ public class UserController {
 
     @PutMapping("/{userId}")
     @ApiOperation(value = "Updates UserRequest in database", notes = "Enter UserRequest id to update UserRequest object in database", response = UserRequest.class)
-    private void updateUserRequest(@ApiParam(value = "UserRequest value you pass to the database")@Valid @RequestBody UserRequest userRequest,@PathVariable Integer userId, BindingResult bindingResult){
+    private void updateUserRequest(@ApiParam(value = "UserRequest value you pass to the database")@Valid @PathVariable Integer userId, @RequestBody UserRequest userRequest, BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
         userService.updateUserRequest(userRequest,userId);
     }
