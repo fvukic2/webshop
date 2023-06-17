@@ -1,5 +1,6 @@
 package com.fvukic.webshop.role;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Builder
+@ApiModel(description = "Fields of the Role entity")
 public class Role {
 
     @Id
