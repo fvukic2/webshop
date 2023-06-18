@@ -1,5 +1,6 @@
 package com.fvukic.webshop.user;
 
+import com.fvukic.webshop.role.Role;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,4 +39,8 @@ public class User {
     @UpdateTimestamp
     @Column(name = "update_time")
     private LocalDateTime updateTime;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 }

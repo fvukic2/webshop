@@ -1,5 +1,6 @@
 package com.fvukic.webshop.user.model;
 
+import com.fvukic.webshop.role.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,6 @@ public class UserRequest {
 
     @NotBlank
     private String password;
+
+    private Role role;
 }

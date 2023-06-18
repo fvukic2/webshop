@@ -33,6 +33,7 @@ public class UserServiceImplementation implements UserService {
                 .orElseThrow(() -> new EntityWithIdNotFoundException(ErrorResponse.ERROR_WRONG_ID,userId));
         existingUser.setUsername(userRequest.getUsername());
         existingUser.setPassword(userRequest.getPassword());
+        existingUser.setRole(userRequest.getRole());
         userRepository.save(existingUser);
     }
 
@@ -46,6 +47,7 @@ public class UserServiceImplementation implements UserService {
 
     private User getUserRequest(UserRequest userRequest){
         return User.builder().username(userRequest.getUsername())
+                .role(userRequest.getRole())
                 .password(userRequest.getPassword()).build();
     }
 }
