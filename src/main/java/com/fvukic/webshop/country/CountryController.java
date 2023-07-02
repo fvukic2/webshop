@@ -21,13 +21,15 @@ public class CountryController {
     }
 
     @GetMapping
-    private List<Country> getAllCountries(){
+    //@PreAuthorize("hasAuthority('EMPLOYEE')")
+    public List<Country> getAllCountries(){
         return countryService.getAllCountries();
     }
 
     @PostMapping
+    //@PreAuthorize("hasAuthority('employee')")
     @ApiOperation(value = "Adds new CountryRequest to database", notes = "Enter all CountryRequest parameters to add new CountryRequest object to database", response = CountryRequest.class)
-    private void saveNewCountryRequest(@ApiParam(value = "CountryRequest value you pass to the database") @Valid @RequestBody CountryRequest countryRequest, BindingResult bindingResult){
+    public void saveNewCountryRequest(@ApiParam(value = "CountryRequest value you pass to the database") @Valid @RequestBody CountryRequest countryRequest, BindingResult bindingResult){
         Helper.validateRequest(bindingResult);
         countryService.saveNewCountryRequest(countryRequest);
     }

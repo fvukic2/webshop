@@ -16,12 +16,20 @@ public class SwaggerConfig {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.fvukic.webshop.controller"))
-                .paths(PathSelectors.any()).build().apiInfo(apiEndPointsInfo()).useDefaultResponseMessages(false);
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.fvukic.webshop"))
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(apiEndPointsInfo())
+                .useDefaultResponseMessages(false);
     }
 
     private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder().title("webshop").description("REST API for application").version("1.0.0")
+        return new ApiInfoBuilder()
+                .title("webshop")
+                .description("REST API for application")
+                .version("1.0.0")
                 .build();
     }
 
